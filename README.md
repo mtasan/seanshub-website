@@ -8,7 +8,7 @@ Psikologlar ve klinikler icin tasarlanmis klinik yonetim sistemi **SeansHub**'in
 
 - **Vite** - Build araci
 - **Tailwind CSS** - Stil framework'u
-- **Cloudflare Pages** - Hosting & CDN
+- **Vercel** - Hosting & CDN
 
 ## Gelistirme
 
@@ -28,9 +28,9 @@ npm run preview
 
 ## Deploy
 
-Bu proje **Cloudflare Pages** uzerinde barindiriliyor. `main` branch'ine push yapildiginda otomatik olarak deploy edilir.
+Bu proje **Vercel** uzerinde barindiriliyor. `main` branch'ine push yapildiginda otomatik olarak deploy edilir.
 
-**Akis:** `git push` → GitHub → Cloudflare Pages → seanshub.com
+**Akis:** `git push` → GitHub → Vercel → seanshub.com
 
 ## Proje Yapisi
 

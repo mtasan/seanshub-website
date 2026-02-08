@@ -290,82 +290,38 @@ const chatMessages = document.getElementById('chat-messages')
 const chatIconOpen = document.getElementById('chat-icon-open')
 const chatIconClose = document.getElementById('chat-icon-close')
 let chatOpen = false
+let chatHistory = []
 
-// Knowledge base
-const knowledgeBase = [
-  {
-    keywords: ['fiyat', 'ücret', 'plan', 'maliyet', 'kaç para', 'ne kadar'],
-    answer:
-      '3 planımız var: <b>Başlangıç</b> (ücretsiz, 5 öğrenciye kadar), <b>Profesyonel</b> (₺229/ay, sınırsız öğrenci), <b>Kurum</b> (₺499/ay, sınırsız eğitmen ve öğrenci). <a href="#fiyatlandirma" class="text-brand-600 underline">Fiyatları inceleyin →</a>',
-  },
-  {
-    keywords: ['ücretsiz', 'deneme', 'trial', 'bedava', 'free'],
-    answer:
-      'Evet! Başlangıç planı <b>sonsuza kadar ücretsiz</b> (5 öğrenciye kadar). Profesyonel plan ise <b>14 gün ücretsiz deneme</b> ile gelir. Kredi kartı gerekmez.',
-  },
-  {
-    keywords: ['güvenlik', 'güvende', 'kvkk', 'gizlilik', 'veri', 'şifre'],
-    answer:
-      'Veri güvenliği önceliğimiz. Her kurum <b>izole veritabanı alanında</b> çalışır. Tüm veriler şifrelenir, ders notlarında revizyon takibi yapılır. <b>KVKK uyumlu</b> altyapı kullanıyoruz.',
-  },
-  {
-    keywords: ['demo', 'göster', 'tanıtım', 'sunum'],
-    answer:
-      'Size özel canlı demo ayarlayabiliriz! <a href="#iletisim-formu" class="text-brand-600 underline">İletişim formundan</a> "Demo Talebi" seçerek bize ulaşın, ekibimiz en kısa sürede dönüş yapsın.',
-  },
-  {
-    keywords: ['nasıl', 'başla', 'kayıt', 'hesap', 'kaydol'],
-    answer:
-      'Başlamak çok kolay! E-posta adresinizle <b>ücretsiz hesap oluşturun</b>, profilinizi kurun ve hemen kullanmaya başlayın. 3 dakikadan kısa sürer. <a href="#" class="text-brand-600 underline">Hemen başlayın →</a>',
-  },
-  {
-    keywords: ['telefon', 'mobil', 'uygulama', 'app', 'tablet'],
-    answer:
-      'SeansHub <b>tamamen responsive</b> tasarıma sahiptir. Telefon, tablet veya bilgisayarınızdan tarayıcı ile erişebilirsiniz. Ayrı bir uygulama indirmenize gerek yok.',
-  },
-  {
-    keywords: ['iptal', 'vazgeç', 'bırak', 'çık'],
-    answer:
-      'İstediğiniz zaman iptal edebilirsiniz, <b>herhangi bir ceza yoktur</b>. İptal sonrası verileriniz 30 gün korunur ve dışa aktarılabilir. Ardından ücretsiz plana geçersiniz.',
-  },
-  {
-    keywords: ['aktar', 'import', 'excel', 'csv', 'veri taşı'],
-    answer:
-      'Evet! <b>Excel veya CSV</b> formatındaki mevcut öğrenci listenizi kolayca içe aktarabilirsiniz. Profesyonel planda öncelikli destek ekibimiz veri aktarımınızda yardımcı olur.',
-  },
-  {
-    keywords: ['destek', 'yardım', 'iletişim', 'mail', 'e-posta'],
-    answer:
-      'Tüm planlar e-posta desteği içerir. Profesyonel planda <b>öncelikli destek</b> ve telefon desteği mevcuttur. Ayrıca <a href="#iletisim-formu" class="text-brand-600 underline">iletişim formu</a> ile bize yazabilirsiniz.',
-  },
-  {
-    keywords: ['özellik', 'ne yapar', 'neler var', 'fonksiyon'],
-    answer:
-      'SeansHub ile: <b>Öğrenci yönetimi</b>, <b>seans planlama</b>, <b>ders notu tutma</b> (revizyon geçmişi ile), <b>takvim</b>, <b>raporlar</b> ve <b>ekip yönetimi</b> yapabilirsiniz. <a href="#ozellikler" class="text-brand-600 underline">Tüm özellikler →</a>',
-  },
-]
+// Gemini AI chat via serverless API
+async function getAIResponse(question) {
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: question,
+        history: chatHistory,
+      }),
+    })
+
+    if (!res.ok) throw new Error('API error')
+
+    const data = await res.json()
+    // Track conversation history
+    chatHistory.push({ role: 'user', text: question })
+    chatHistory.push({ role: 'model', text: data.reply })
+    // Keep last 10 messages
+    if (chatHistory.length > 10) chatHistory = chatHistory.slice(-10)
+
+    return data.reply
+  } catch {
+    // Fallback: return null so we use static fallback
+    return null
+  }
+}
 
 const fallbackAnswer =
-  'Bu konuda size daha iyi yardımcı olabilmemiz için <a href="#iletisim-formu" class="text-brand-600 underline">iletişim formu</a> üzerinden bize yazabilir veya <b>destek@seanshub.com</b> adresine e-posta gönderebilirsiniz.'
-
-function findAnswer(question) {
-  const q = question.toLowerCase().replace(/[?!.,]/g, '')
-  let bestMatch = null
-  let bestScore = 0
-
-  for (const item of knowledgeBase) {
-    let score = 0
-    for (const keyword of item.keywords) {
-      if (q.includes(keyword)) score++
-    }
-    if (score > bestScore) {
-      bestScore = score
-      bestMatch = item
-    }
-  }
-
-  return bestScore > 0 ? bestMatch.answer : fallbackAnswer
-}
+  'Üzgünüm, şu anda yanıt veremiyorum. <a href="#iletisim-formu" class="text-brand-600 underline">İletişim formu</a> üzerinden bize yazabilir veya <b>destek@seanshub.com</b> adresine e-posta gönderebilirsiniz.'
 
 function addMessage(html, isUser) {
   const wrapper = document.createElement('div')
@@ -405,7 +361,7 @@ function removeTyping() {
   if (typing) typing.remove()
 }
 
-function handleChatSubmit() {
+async function handleChatSubmit() {
   const question = chatInput.value.trim()
   if (!question) return
 
@@ -416,14 +372,13 @@ function handleChatSubmit() {
   const quickReplies = document.getElementById('chat-quick-replies')
   if (quickReplies) quickReplies.classList.add('hidden')
 
-  // Show typing, then answer
+  // Show typing indicator
   showTyping()
 
-  const delay = 600 + Math.random() * 800
-  setTimeout(() => {
-    removeTyping()
-    addMessage(findAnswer(question), false)
-  }, delay)
+  // Call Gemini AI via serverless API
+  const aiReply = await getAIResponse(question)
+  removeTyping()
+  addMessage(aiReply || fallbackAnswer, false)
 }
 
 if (chatToggle) {

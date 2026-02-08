@@ -284,6 +284,55 @@ html {
   30% { transform: translateY(-4px); opacity: 1; }
 }
 
+/* Chat Markdown support */
+.chat-md p {
+  margin: 0;
+}
+
+.chat-md p + p {
+  margin-top: 0.5rem;
+}
+
+.chat-md strong {
+  font-weight: 600;
+  color: #334155;
+}
+
+.chat-md em {
+  font-style: italic;
+}
+
+.chat-md code {
+  background: #e2e8f0;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.chat-md a {
+  color: #d97706;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-md a:hover {
+  color: #92400e;
+}
+
+.chat-md .chat-md-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.35rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.chat-md .chat-md-list li {
+  line-height: 1.45;
+}
+
 /* ═══════════════════════════════════════════════
    PREFERS-REDUCED-MOTION
    ═══════════════════════════════════════════════ */

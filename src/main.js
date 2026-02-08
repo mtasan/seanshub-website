@@ -323,7 +323,38 @@ async function getAIResponse(question) {
 const fallbackAnswer =
   'Üzgünüm, şu anda yanıt veremiyorum. <a href="#iletisim-formu" class="text-brand-600 underline">İletişim formu</a> üzerinden bize yazabilir veya <b>destek@seanshub.com</b> adresine e-posta gönderebilirsiniz.'
 
-function addMessage(html, isUser) {
+function markdownToHtml(md) {
+  let html = md
+    // Escape HTML tags first
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+  // Bold: **text** or __text__
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+  html = html.replace(/__(.+?)__/g, '<strong>$1</strong>')
+  // Italic: *text* or _text_
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>')
+  html = html.replace(/(?<!\w)_(.+?)_(?!\w)/g, '<em>$1</em>')
+  // Inline code: `code`
+  html = html.replace(/`(.+?)`/g, '<code>$1</code>')
+  // Links: [text](url)
+  html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-brand-600 underline">$1</a>')
+  // Unordered list items: - item or * item
+  html = html.replace(/^[\-\*]\s+(.+)/gm, '<li>$1</li>')
+  // Numbered list items: 1. item
+  html = html.replace(/^\d+\.\s+(.+)/gm, '<li>$1</li>')
+  // Wrap consecutive <li> in <ul>
+  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul class="chat-md-list">$1</ul>')
+  // Line breaks (double newline = paragraph, single = br)
+  html = html.replace(/\n\n/g, '</p><p>')
+  html = html.replace(/\n/g, '<br>')
+  html = '<p>' + html + '</p>'
+  // Clean up empty paragraphs
+  html = html.replace(/<p>\s*<\/p>/g, '')
+  return html
+}
+
+function addMessage(content, isUser) {
+  const html = isUser ? content : markdownToHtml(content)
   const wrapper = document.createElement('div')
   wrapper.className = isUser ? 'chat-msg-user flex justify-end' : 'chat-msg-bot flex gap-2.5'
 
@@ -334,7 +365,7 @@ function addMessage(html, isUser) {
       <div class="w-7 h-7 rounded-full bg-amber-100 flex-shrink-0 flex items-center justify-center">
         <svg width="14" height="14" viewBox="0 0 64 64" fill="none"><path d="M32 8C18 8 10 18 10 30C10 42 18 52 32 56C46 52 54 42 54 30C54 18 46 8 32 8Z" fill="#f59e0b"/><path d="M32 44C32 44 22 36 22 28C22 24 25 22 28 22C30 22 31.5 23 32 24C32.5 23 34 22 36 22C39 22 42 24 42 28C42 36 32 44 32 44Z" fill="#fff"/></svg>
       </div>
-      <div class="bg-slate-100 rounded-2xl rounded-tl-md px-4 py-2.5 text-sm text-slate-700 max-w-[85%]">${html}</div>
+      <div class="chat-md bg-slate-100 rounded-2xl rounded-tl-md px-4 py-2.5 text-sm text-slate-700 max-w-[85%]">${html}</div>
     `
   }
 

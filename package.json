@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "description": "SeansHub - Klinik Yönetim Sistemi Landing Page",
+  "description": "SeansHub - Özel Ders ve Eğitim Yönetim Sistemi Landing Page",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

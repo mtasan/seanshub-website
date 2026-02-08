@@ -334,17 +334,17 @@ const knowledgeBase = [
   {
     keywords: ['fiyat', 'ücret', 'plan', 'maliyet', 'kaç para', 'ne kadar'],
     answer:
-      '3 planımız var: <b>Başlangıç</b> (ücretsiz, 20 danışana kadar), <b>Profesyonel</b> (₺499/ay, sınırsız danışan), <b>Klinik</b> (₺1.499/ay, sınırsız ekip). Yıllık ödemede %20 indirim! <a href="#fiyatlandirma" class="text-brand-600 underline">Fiyatları inceleyin →</a>',
+      '2 planımız var: <b>Başlangıç</b> (ücretsiz, 5 öğrenciye kadar), <b>Profesyonel</b> (₺499/ay, sınırsız öğrenci ve eğitmen). Yıllık ödemede %20 indirim! <a href="#fiyatlandirma" class="text-brand-600 underline">Fiyatları inceleyin →</a>',
   },
   {
     keywords: ['ücretsiz', 'deneme', 'trial', 'bedava', 'free'],
     answer:
-      'Evet! Başlangıç planı <b>sonsuza kadar ücretsiz</b> (20 danışana kadar). Profesyonel ve Klinik planlar ise <b>14 gün ücretsiz deneme</b> ile gelir. Kredi kartı gerekmez.',
+      'Evet! Başlangıç planı <b>sonsuza kadar ücretsiz</b> (5 öğrenciye kadar). Profesyonel plan ise <b>14 gün ücretsiz deneme</b> ile gelir. Kredi kartı gerekmez.',
   },
   {
     keywords: ['güvenlik', 'güvende', 'kvkk', 'gizlilik', 'veri', 'şifre'],
     answer:
-      'Veri güvenliği önceliğimiz. Her klinik <b>izole veritabanı alanında</b> çalışır. Tüm veriler şifrelenir, klinik notlarda revizyon takibi yapılır. <b>KVKK uyumlu</b> altyapı kullanıyoruz.',
+      'Veri güvenliği önceliğimiz. Her kurum <b>izole veritabanı alanında</b> çalışır. Tüm veriler şifrelenir, ders notlarında revizyon takibi yapılır. <b>KVKK uyumlu</b> altyapı kullanıyoruz.',
   },
   {
     keywords: ['demo', 'göster', 'tanıtım', 'sunum'],
@@ -354,7 +354,7 @@ const knowledgeBase = [
   {
     keywords: ['nasıl', 'başla', 'kayıt', 'hesap', 'kaydol'],
     answer:
-      'Başlamak çok kolay! E-posta adresinizle <b>ücretsiz hesap oluşturun</b>, kliniğinizi kurun ve hemen kullanmaya başlayın. 3 dakikadan kısa sürer. <a href="#" class="text-brand-600 underline">Hemen başlayın →</a>',
+      'Başlamak çok kolay! E-posta adresinizle <b>ücretsiz hesap oluşturun</b>, profilinizi kurun ve hemen kullanmaya başlayın. 3 dakikadan kısa sürer. <a href="#" class="text-brand-600 underline">Hemen başlayın →</a>',
   },
   {
     keywords: ['telefon', 'mobil', 'uygulama', 'app', 'tablet'],
@@ -369,17 +369,17 @@ const knowledgeBase = [
   {
     keywords: ['aktar', 'import', 'excel', 'csv', 'veri taşı'],
     answer:
-      'Evet! <b>Excel veya CSV</b> formatındaki mevcut danışan listenizi kolayca içe aktarabilirsiniz. Klinik planında özel onboarding desteğimiz veri aktarımınızda yardımcı olur.',
+      'Evet! <b>Excel veya CSV</b> formatındaki mevcut öğrenci listenizi kolayca içe aktarabilirsiniz. Profesyonel planda öncelikli destek ekibimiz veri aktarımınızda yardımcı olur.',
   },
   {
     keywords: ['destek', 'yardım', 'iletişim', 'mail', 'e-posta'],
     answer:
-      'Tüm planlar e-posta desteği içerir. Profesyonel planda <b>öncelikli destek</b>, Klinik planda <b>özel müşteri temsilcisi</b> ve telefon desteği mevcuttur. Ayrıca <a href="#iletisim-formu" class="text-brand-600 underline">iletişim formu</a> ile bize yazabilirsiniz.',
+      'Tüm planlar e-posta desteği içerir. Profesyonel planda <b>öncelikli destek</b> ve telefon desteği mevcuttur. Ayrıca <a href="#iletisim-formu" class="text-brand-600 underline">iletişim formu</a> ile bize yazabilirsiniz.',
   },
   {
     keywords: ['özellik', 'ne yapar', 'neler var', 'fonksiyon'],
     answer:
-      'SeansHub ile: <b>Danışan yönetimi</b>, <b>seans planlama</b>, <b>klinik not tutma</b> (revizyon geçmişi ile), <b>takvim</b>, <b>raporlar</b> ve <b>ekip yönetimi</b> yapabilirsiniz. <a href="#ozellikler" class="text-brand-600 underline">Tüm özellikler →</a>',
+      'SeansHub ile: <b>Öğrenci yönetimi</b>, <b>seans planlama</b>, <b>ders notu tutma</b> (revizyon geçmişi ile), <b>takvim</b>, <b>raporlar</b> ve <b>ekip yönetimi</b> yapabilirsiniz. <a href="#ozellikler" class="text-brand-600 underline">Tüm özellikler →</a>',
   },
 ]
 

@@ -1,6 +1,6 @@
 # SeansHub Landing Page
 
-Marketing website for **SeansHub** — a session and client management system designed for psychologists, dietitians, and physiotherapists.
+Marketing website for **SeansHub** — a session and student management system designed for private tutors, educators, and training centers.
 
 **Live:** [seanshub.com](https://seanshub.com)
 
@@ -76,7 +76,7 @@ This project includes the following Claude Code skills:
 
 ## Pricing Plans
 
-| Plan | Price | Professionals | Clients |
-|------|-------|---------------|---------|
+| Plan | Price | Educators | Students |
+|------|-------|-----------|----------|
 | Starter | Free | 1 | Up to 5 |
 | Professional | 499 TL/mo | Unlimited | Unlimited |

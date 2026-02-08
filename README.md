@@ -4,6 +4,8 @@ Marketing website for **SeansHub** — a session and client management system de
 
 **Live:** [seanshub.com](https://seanshub.com)
 
+![SeansHub Hero](docs/hero.png)
+
 ## Features
 
 - Responsive single-page design
@@ -57,6 +59,7 @@ landing_website/
 │   └── skills/
 │       └── ship-saas-website/
 │           └── SKILL.md  # SaaS website building skill
+├── docs/               # Screenshots
 ├── dist/               # Build output (gitignored)
 ├── vercel.json         # Vercel config (headers, caching)
 ├── vite.config.js      # Vite config

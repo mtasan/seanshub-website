@@ -12,8 +12,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const apiKey = process.env.GEMINI_API_KEY
-  if (!apiKey) {
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+  if (!GEMINI_API_KEY) {
     return res.status(500).json({ error: 'API key not configured' })
   }
 
@@ -24,8 +24,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Message is required' })
     }
 
-    // Build conversation with system context
-    const systemContext = `Sen SeansHub'ın yapay zeka destekli müşteri destek asistanısın. SeansHub, özel ders öğretmenleri, eğitmenler ve kurs merkezleri için bir seans ve öğrenci yönetim sistemidir.
+    const systemPrompt = `Sen SeansHub'ın yapay zeka destekli müşteri destek asistanısın. SeansHub, özel ders öğretmenleri, eğitmenler ve kurs merkezleri için bir seans ve öğrenci yönetim sistemidir.
 
 Temel bilgiler:
 - SeansHub web tabanlı bir SaaS uygulamasıdır (app.seanshub.com)
@@ -51,9 +50,9 @@ Kurallar:
 - Rakip ürünler hakkında yorum yapma
 - Fiyat bilgisi verirken güncel planları kullan`
 
+    // Build conversation contents
     const contents = []
 
-    // Add conversation history if provided
     if (history && Array.isArray(history)) {
       for (const msg of history.slice(-6)) {
         contents.push({
@@ -63,52 +62,53 @@ Kurallar:
       }
     }
 
-    // Add current user message
     contents.push({
       role: 'user',
       parts: [{ text: message }],
     })
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents,
-          systemInstruction: {
-            parts: [{ text: systemContext }],
-          },
-          generationConfig: {
-            temperature: 0.7,
-            topP: 0.9,
-            maxOutputTokens: 300,
-          },
-          safetySettings: [
-            { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-            { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-            { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-            { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          ],
-        }),
-      }
-    )
+    const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`
 
-    if (!response.ok) {
-      const errorData = await response.text()
-      console.error('Gemini API error:', response.status, errorData)
-      return res.status(502).json({ error: 'AI service error' })
+    const requestBody = {
+      system_instruction: {
+        parts: [{ text: systemPrompt }],
+      },
+      contents,
+      generationConfig: {
+        temperature: 0.7,
+        topP: 0.9,
+        topK: 40,
+        maxOutputTokens: 800,
+      },
     }
+
+    const response = await fetch(GEMINI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    })
 
     const data = await response.json()
 
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      'Üzgünüm, şu anda yanıt veremiyorum. Lütfen destek@seanshub.com adresine yazın.'
+    if (data.error) {
+      console.error('Gemini API error:', data.error.message)
+      return res.status(200).json({
+        reply: 'Şu anda yapay zeka servisine ulaşamıyorum. Sorularınız için destek@seanshub.com adresine yazabilirsiniz.',
+      })
+    }
 
-    return res.status(200).json({ reply })
+    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+      const reply = data.candidates[0].content.parts[0].text
+      return res.status(200).json({ reply })
+    }
+
+    return res.status(200).json({
+      reply: 'Üzgünüm, şu anda yanıt veremiyorum. Lütfen destek@seanshub.com adresine yazın.',
+    })
   } catch (error) {
     console.error('Chat API error:', error)
-    return res.status(500).json({ error: 'Internal server error' })
+    return res.status(200).json({
+      reply: 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya destek@seanshub.com adresine yazın.',
+    })
   }
 }

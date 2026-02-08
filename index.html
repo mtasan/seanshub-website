@@ -50,7 +50,7 @@
       "lowPrice": "0",
       "highPrice": "499",
       "priceCurrency": "TRY",
-      "offerCount": "2"
+      "offerCount": "3"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -771,29 +771,19 @@
           Her eğitmen için uygun plan
         </h2>
         <p class="text-lg text-slate-500">14 gün ücretsiz deneyin, istediğiniz zaman iptal edin.</p>
-
-        <!-- Billing toggle -->
-        <div class="flex items-center justify-center gap-3 mt-8">
-          <span class="text-sm font-medium text-slate-700 billing-label" data-period="monthly">Aylık</span>
-          <button id="billing-toggle" class="relative w-14 h-7 bg-slate-200 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-brand-300" aria-label="Ödeme periyodu">
-            <span id="billing-knob" class="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300"></span>
-          </button>
-          <span class="text-sm font-medium text-slate-400 billing-label" data-period="annual">Yıllık</span>
-          <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full">%20 indirim</span>
-        </div>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
 
         <!-- Plan 1: Başlangıç -->
         <div class="bg-white rounded-2xl p-8 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-lg reveal">
           <div class="mb-6">
             <h3 class="text-lg font-bold text-slate-900 mb-1">Başlangıç</h3>
-            <p class="text-sm text-slate-500">Bireysel eğitmenler için</p>
+            <p class="text-sm text-slate-500">Yeni başlayan eğitmenler için</p>
           </div>
           <div class="mb-6">
             <div class="flex items-baseline gap-1">
-              <span class="text-4xl font-bold text-slate-900 price-amount" data-monthly="0" data-annual="0">&#8378;0</span>
+              <span class="text-4xl font-bold text-slate-900">&#8378;0</span>
               <span class="text-slate-400 text-sm">/ay</span>
             </div>
             <p class="text-xs text-brand-600 font-medium mt-1">Sonsuza kadar ücretsiz</p>
@@ -830,16 +820,58 @@
           </div>
           <div class="mb-6">
             <h3 class="text-lg font-bold text-slate-900 mb-1">Profesyonel</h3>
+            <p class="text-sm text-slate-500">Bireysel eğitmenler için</p>
+          </div>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-bold text-slate-900">&#8378;229</span>
+              <span class="text-slate-400 text-sm">/ay</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">KDV dahil</p>
+          </div>
+          <a href="#" class="block w-full text-center py-3 px-6 rounded-xl btn-primary text-white font-semibold mb-8">14 Gün Ücretsiz Deneyin</a>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 text-sm text-slate-600">
+              <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              1 eğitmen
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-600">
+              <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <strong>Sınırsız</strong> öğrenci
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-600">
+              <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Gelişmiş takvim
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-600">
+              <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Detaylı raporlar ve analitik
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-600">
+              <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              E-posta ve SMS hatırlatmaları
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-600">
+              <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Öncelikli destek
+            </li>
+          </ul>
+        </div>
+
+        <!-- Plan 3: Kurum -->
+        <div class="bg-white rounded-2xl p-8 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-lg reveal">
+          <div class="mb-6">
+            <h3 class="text-lg font-bold text-slate-900 mb-1">Kurum</h3>
             <p class="text-sm text-slate-500">Eğitim merkezleri ve ekipler için</p>
           </div>
           <div class="mb-6">
             <div class="flex items-baseline gap-1">
-              <span class="text-4xl font-bold text-slate-900 price-amount" data-monthly="499" data-annual="399">&#8378;499</span>
+              <span class="text-4xl font-bold text-slate-900">&#8378;499</span>
               <span class="text-slate-400 text-sm">/ay</span>
             </div>
-            <p class="text-xs text-slate-400 mt-1 price-note" data-monthly="Yıllık ödemede &#8378;399/ay" data-annual="&#8378;4.788/yıl &mdash; &#8378;1.200 tasarruf">Yıllık ödemede &#8378;399/ay</p>
+            <p class="text-xs text-slate-400 mt-1">KDV dahil</p>
           </div>
-          <a href="#" class="block w-full text-center py-3 px-6 rounded-xl btn-primary text-white font-semibold mb-8">14 Gün Ücretsiz Deneyin</a>
+          <a href="#" class="block w-full text-center py-3 px-6 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold hover:border-brand-300 hover:text-brand-600 transition-all mb-8">14 Gün Ücretsiz Deneyin</a>
           <ul class="space-y-3">
             <li class="flex items-start gap-3 text-sm text-slate-600">
               <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -860,6 +892,10 @@
             <li class="flex items-start gap-3 text-sm text-slate-600">
               <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               E-posta ve SMS hatırlatmaları
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-600">
+              <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Ekip yönetimi
             </li>
             <li class="flex items-start gap-3 text-sm text-slate-600">
               <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>

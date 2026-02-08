@@ -10,11 +10,10 @@ Marketing website for **SeansHub** — a session and student management system d
 
 - Responsive single-page design
 - Interactive demo panels (Dashboard, Calendar, Notes)
-- 2 pricing plans (Starter / Professional)
+- 3 pricing plans (Starter / Professional / Enterprise)
 - Live chatbot (FAQ)
 - Contact form
 - SEO optimization (meta, Open Graph, JSON-LD)
-- Monthly/Annual pricing toggle
 
 ## Tech Stack
 
@@ -79,4 +78,5 @@ This project includes the following Claude Code skills:
 | Plan | Price | Educators | Students |
 |------|-------|-----------|----------|
 | Starter | Free | 1 | Up to 5 |
-| Professional | 499 TL/mo | Unlimited | Unlimited |
+| Professional | 229 TL/mo | 1 | Unlimited |
+| Enterprise | 499 TL/mo | Unlimited | Unlimited |

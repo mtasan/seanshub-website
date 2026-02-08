@@ -200,44 +200,6 @@ if (demoSection) {
 
 
 // ═══════════════════════════════════════════════
-// BILLING TOGGLE (Pricing)
-// ═══════════════════════════════════════════════
-
-const billingToggle = document.getElementById('billing-toggle')
-let isAnnual = false
-
-if (billingToggle) {
-  billingToggle.addEventListener('click', () => {
-    isAnnual = !isAnnual
-    billingToggle.classList.toggle('annual', isAnnual)
-
-    // Update label emphasis
-    document.querySelectorAll('.billing-label').forEach((label) => {
-      if (label.dataset.period === 'annual') {
-        label.classList.toggle('text-slate-700', isAnnual)
-        label.classList.toggle('text-slate-400', !isAnnual)
-      } else {
-        label.classList.toggle('text-slate-700', !isAnnual)
-        label.classList.toggle('text-slate-400', isAnnual)
-      }
-    })
-
-    // Update prices
-    const period = isAnnual ? 'annual' : 'monthly'
-    document.querySelectorAll('.price-amount').forEach((el) => {
-      const val = el.dataset[period]
-      el.innerHTML = `&#8378;${val}`
-    })
-
-    // Update price notes
-    document.querySelectorAll('.price-note').forEach((el) => {
-      el.innerHTML = el.dataset[period]
-    })
-  })
-}
-
-
-// ═══════════════════════════════════════════════
 // CONTACT FORM
 // ═══════════════════════════════════════════════
 
@@ -334,7 +296,7 @@ const knowledgeBase = [
   {
     keywords: ['fiyat', 'ücret', 'plan', 'maliyet', 'kaç para', 'ne kadar'],
     answer:
-      '2 planımız var: <b>Başlangıç</b> (ücretsiz, 5 öğrenciye kadar), <b>Profesyonel</b> (₺499/ay, sınırsız öğrenci ve eğitmen). Yıllık ödemede %20 indirim! <a href="#fiyatlandirma" class="text-brand-600 underline">Fiyatları inceleyin →</a>',
+      '3 planımız var: <b>Başlangıç</b> (ücretsiz, 5 öğrenciye kadar), <b>Profesyonel</b> (₺229/ay, sınırsız öğrenci), <b>Kurum</b> (₺499/ay, sınırsız eğitmen ve öğrenci). <a href="#fiyatlandirma" class="text-brand-600 underline">Fiyatları inceleyin →</a>',
   },
   {
     keywords: ['ücretsiz', 'deneme', 'trial', 'bedava', 'free'],

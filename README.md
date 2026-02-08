@@ -1,79 +1,79 @@
 # SeansHub Landing Page
 
-Psikologlar, diyetisyenler ve fizyoterapistler icin tasarlanmis seans ve danisan yonetim sistemi **SeansHub**'in tanitim web sitesi.
+Marketing website for **SeansHub** — a session and client management system designed for psychologists, dietitians, and physiotherapists.
 
-**Canli:** [seanshub.com](https://seanshub.com)
+**Live:** [seanshub.com](https://seanshub.com)
 
-## Ozellikler
+## Features
 
-- Duyarli (responsive) tek sayfa tasarim
-- Interaktif demo panelleri (Dashboard, Takvim, Notlar)
-- 2 fiyatlandirma plani (Baslangic / Profesyonel)
-- Canli sohbet botu (SSS)
-- Iletisim formu
-- SEO optimizasyonu (meta, Open Graph, JSON-LD)
-- Aylik/Yillik fiyat degistirici
+- Responsive single-page design
+- Interactive demo panels (Dashboard, Calendar, Notes)
+- 2 pricing plans (Starter / Professional)
+- Live chatbot (FAQ)
+- Contact form
+- SEO optimization (meta, Open Graph, JSON-LD)
+- Monthly/Annual pricing toggle
 
-## Teknolojiler
+## Tech Stack
 
-- **Vite** - Build araci
-- **Tailwind CSS** - Stil framework'u
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling framework
 - **Vercel** - Hosting & CDN
 
-## Gelistirme
+## Development
 
 ```bash
-# Bagimliliklari yukle
+# Install dependencies
 npm install
 
-# Gelistirme sunucusu
+# Development server
 npm run dev
 
 # Production build
 npm run build
 
-# Build onizleme
+# Preview build
 npm run preview
 ```
 
-## Deploy
+## Deployment
 
-Bu proje **Vercel** uzerinde barindiriliyor. `main` branch'ine push yapildiginda otomatik olarak deploy edilir.
+This project is hosted on **Vercel**. Pushing to the `main` branch triggers automatic deployment.
 
-**Akis:** `git push` → GitHub (`mtasan/seanshub-website`) → Vercel → seanshub.com
+**Pipeline:** `git push` → GitHub (`mtasan/seanshub-website`) → Vercel → seanshub.com
 
-**Domain:** Cloudflare uzerinden DNS yonetimi, Vercel'e yonlendirme.
+**Domain:** DNS managed via Cloudflare, pointing to Vercel.
 
-## Proje Yapisi
+## Project Structure
 
 ```
 landing_website/
-├── index.html          # Ana sayfa
+├── index.html          # Main page
 ├── src/
-│   ├── main.js         # JS giris noktasi
+│   ├── main.js         # JS entry point
 │   └── style.css       # Tailwind CSS
-├── public/             # Statik dosyalar (favicon, robots.txt)
+├── public/             # Static assets (favicon, robots.txt)
 ├── .claude/
 │   └── skills/
 │       └── ship-saas-website/
-│           └── SKILL.md  # SaaS website olusturma skill'i
-├── dist/               # Build ciktisi (gitignore)
-├── vercel.json         # Vercel yapilandirmasi (headers, caching)
-├── vite.config.js      # Vite yapilandirmasi
-├── tailwind.config.js  # Tailwind yapilandirmasi
-├── postcss.config.js   # PostCSS yapilandirmasi
+│           └── SKILL.md  # SaaS website building skill
+├── dist/               # Build output (gitignored)
+├── vercel.json         # Vercel config (headers, caching)
+├── vite.config.js      # Vite config
+├── tailwind.config.js  # Tailwind config
+├── postcss.config.js   # PostCSS config
 └── package.json
 ```
 
 ## Claude Code Skills
 
-Bu projede asagidaki Claude Code skill'leri kullanilmaktadir:
+This project includes the following Claude Code skills:
 
-- **ship-saas-website** — SaaS urunleri icin profesyonel pazarlama web siteleri olusturma rehberi. Hero, ozellikler, interaktif demo, fiyatlandirma, SSS, sohbet botu, iletisim formu ve SEO optimizasyonu kapsar.
+- **ship-saas-website** — Guide for building professional SaaS marketing websites. Covers hero, features, interactive demo, pricing, FAQ, chatbot, contact form, and SEO optimization.
 
-## Fiyatlandirma Planlari
+## Pricing Plans
 
-| Plan | Fiyat | Uzman | Danisan |
-|------|-------|-------|---------|
-| Baslangic | Ucretsiz | 1 | 5'e kadar |
-| Profesyonel | 499 TL/ay | Sinirsiz | Sinirsiz |
+| Plan | Price | Professionals | Clients |
+|------|-------|---------------|---------|
+| Starter | Free | 1 | Up to 5 |
+| Professional | 499 TL/mo | Unlimited | Unlimited |

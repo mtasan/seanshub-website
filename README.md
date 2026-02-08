@@ -11,7 +11,8 @@ Marketing website for **SeansHub** — a session and student management system d
 - Responsive single-page design
 - Interactive demo panels (Dashboard, Calendar, Notes)
 - 3 pricing plans (Starter / Professional / Enterprise)
-- Live chatbot (FAQ)
+- AI-powered chatbot (Gemini 2.5 Flash via Vercel Serverless Functions)
+- Markdown rendering in chatbot responses
 - Contact form
 - SEO optimization (meta, Open Graph, JSON-LD)
 
@@ -19,7 +20,8 @@ Marketing website for **SeansHub** — a session and student management system d
 
 - **Vite** - Build tool
 - **Tailwind CSS** - Styling framework
-- **Vercel** - Hosting & CDN
+- **Vercel** - Hosting, CDN & Serverless Functions
+- **Gemini 2.5 Flash** - AI chatbot (via Google AI API)
 
 ## Development
 
@@ -51,8 +53,10 @@ This project is hosted on **Vercel**. Pushing to the `main` branch triggers auto
 landing_website/
 ├── index.html          # Main page
 ├── src/
-│   ├── main.js         # JS entry point
-│   └── style.css       # Tailwind CSS
+│   ├── main.js         # JS entry point (chatbot, animations, interactions)
+│   └── style.css       # Tailwind CSS + chatbot markdown styles
+├── api/
+│   └── chat.js         # Vercel Serverless Function (Gemini AI proxy)
 ├── public/             # Static assets (favicon, robots.txt)
 ├── .claude/
 │   └── skills/
@@ -60,7 +64,7 @@ landing_website/
 │           └── SKILL.md  # SaaS website building skill
 ├── docs/               # Screenshots
 ├── dist/               # Build output (gitignored)
-├── vercel.json         # Vercel config (headers, caching)
+├── vercel.json         # Vercel config (rewrites, headers)
 ├── vite.config.js      # Vite config
 ├── tailwind.config.js  # Tailwind config
 ├── postcss.config.js   # PostCSS config

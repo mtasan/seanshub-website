@@ -53,6 +53,10 @@ landing_website/
 │   ├── main.js         # JS giris noktasi
 │   └── style.css       # Tailwind CSS
 ├── public/             # Statik dosyalar (favicon, robots.txt)
+├── .claude/
+│   └── skills/
+│       └── ship-saas-website/
+│           └── SKILL.md  # SaaS website olusturma skill'i
 ├── dist/               # Build ciktisi (gitignore)
 ├── vercel.json         # Vercel yapilandirmasi (headers, caching)
 ├── vite.config.js      # Vite yapilandirmasi
@@ -60,6 +64,12 @@ landing_website/
 ├── postcss.config.js   # PostCSS yapilandirmasi
 └── package.json
 ```
+
+## Claude Code Skills
+
+Bu projede asagidaki Claude Code skill'leri kullanilmaktadir:
+
+- **ship-saas-website** — SaaS urunleri icin profesyonel pazarlama web siteleri olusturma rehberi. Hero, ozellikler, interaktif demo, fiyatlandirma, SSS, sohbet botu, iletisim formu ve SEO optimizasyonu kapsar.
 
 ## Fiyatlandirma Planlari
 
